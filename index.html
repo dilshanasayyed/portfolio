@@ -1,1034 +1,660 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dilshana Bano Sayyed | Full Stack Developer</title>
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  
-  <style>
-    :root {
-      --bg: #09090b;
-      --bg-surface: rgba(24, 24, 27, 0.4);
-      --bg-surface-hover: rgba(39, 39, 42, 0.6);
-      --border: rgba(255, 255, 255, 0.1);
-      --border-hover: rgba(255, 255, 255, 0.2);
-      
-      --primary: #818cf8;
-      --primary-glow: rgba(129, 140, 248, 0.3);
-      --secondary: #c084fc;
-      --accent: #38bdf8;
-      
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      
-      --font-heading: 'Outfit', sans-serif;
-      --font-body: 'Inter', sans-serif;
-      
-      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
+  <meta name="description" content="Portfolio of Dilshana Bano Sayyed, a Full Stack Developer and B.E. Computer Engineering graduate (2026, CGPA 8.9) from Mumbai. Promoted to Senior Developer at Ownmor Global, where she built www.ownmor.com end to end." />
+  <meta name="keywords" content="Dilshana Bano Sayyed, Dilshana Sayyed, portfolio, Full Stack Developer, React, TypeScript, Node.js, PostgreSQL, Prisma, Django, Python, Mumbai" />
+  <meta name="author" content="Dilshana Bano Sayyed" />
+  <meta name="theme-color" content="#6d28d9" />
+  <meta property="og:title" content="Dilshana Bano Sayyed | Full Stack Developer" />
+  <meta property="og:description" content="Full Stack Developer · Promoted to Senior Developer at Ownmor Global · B.E. Computer Engineering 2026 (CGPA 8.9)" />
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/148440462?v=4" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237c3aed'/%3E%3Cstop offset='1' stop-color='%230ea5e9'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='43' font-family='Arial' font-weight='800' font-size='30' text-anchor='middle' fill='white'%3EDS%3C/text%3E%3C/svg%3E" />
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css" />
 
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background-color: var(--bg);
-      color: var(--text-main);
-      font-family: var(--font-body);
-      line-height: 1.6;
-      overflow-x: hidden;
-      position: relative;
-    }
-
-    /* Background Effects */
-    .bg-grid {
-      position: fixed;
-      inset: 0;
-      background-image: 
-        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-      background-size: 40px 40px;
-      z-index: -2;
-      animation: gridMove 20s linear infinite;
-    }
-    
-    .bg-grid::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 50% 0%, transparent 10%, var(--bg) 70%);
-    }
-
-    @keyframes gridMove {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(40px); }
-    }
-
-    .bg-noise {
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 50;
-    }
-
-    .blob {
-      position: fixed;
-      border-radius: 50%;
-      filter: blur(100px);
-      z-index: -1;
-      animation: float 20s infinite ease-in-out alternate;
-    }
-    
-    .blob-1 {
-      width: 400px; height: 400px;
-      background: rgba(129, 140, 248, 0.15);
-      top: -10%; left: -10%;
-    }
-    
-    .blob-2 {
-      width: 500px; height: 500px;
-      background: rgba(192, 132, 252, 0.12);
-      bottom: -10%; right: -10%;
-      animation-delay: -5s;
-    }
-    
-    .blob-3 {
-      width: 300px; height: 300px;
-      background: rgba(56, 189, 248, 0.12);
-      top: 40%; left: 60%;
-      animation-delay: -10s;
-    }
-
-    @keyframes float {
-      0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(30px, 50px) scale(1.1); }
-    }
-
-    /* Container */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    /* Navigation */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      padding: 1.2rem 0;
-      background: rgba(9, 9, 11, 0.7);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-    
-    .nav-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-family: var(--font-heading);
-      font-size: 1.5rem;
-      font-weight: 800;
-      background: linear-gradient(to right, var(--primary), var(--secondary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-decoration: none;
-      letter-spacing: -0.5px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2.5rem;
-    }
-
-    .nav-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.95rem;
-      font-weight: 500;
-      transition: var(--transition);
-    }
-
-    .nav-links a:hover {
-      color: var(--text-main);
-    }
-
-    /* Buttons */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.8rem 1.8rem;
-      border-radius: 99px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      text-decoration: none;
-      transition: var(--transition);
-      cursor: pointer;
-      gap: 0.5rem;
-    }
-
-    .btn-primary {
-      background: var(--text-main);
-      color: var(--bg);
-      border: 1px solid var(--text-main);
-    }
-
-    .btn-primary:hover {
-      background: transparent;
-      color: var(--text-main);
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-    }
-
-    .btn-secondary {
-      background: var(--bg-surface);
-      color: var(--text-main);
-      border: 1px solid var(--border);
-    }
-
-    .btn-secondary:hover {
-      background: var(--bg-surface-hover);
-      border-color: var(--border-hover);
-    }
-
-    /* Sections */
-    section {
-      padding: 7rem 0;
-      position: relative;
-    }
-
-    .section-title {
-      font-family: var(--font-heading);
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 3rem;
-      display: inline-block;
-    }
-
-    .section-title span {
-      background: linear-gradient(to right, var(--primary), var(--secondary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    /* Hero Section */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding-top: 5rem;
-    }
-
-    .hero-content {
-      display: flex;
-      align-items: center;
-      gap: 4rem;
-      width: 100%;
-    }
-
-    .hero-text {
-      flex: 1;
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 0.4rem 1rem;
-      background: rgba(56, 189, 248, 0.1);
-      border: 1px solid rgba(56, 189, 248, 0.2);
-      color: var(--accent);
-      border-radius: 99px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      margin-bottom: 1.5rem;
-      letter-spacing: 0.5px;
-    }
-
-    .hero h1 {
-      font-family: var(--font-heading);
-      font-size: clamp(3rem, 5vw, 4.5rem);
-      font-weight: 800;
-      line-height: 1.1;
-      margin-bottom: 1rem;
-      letter-spacing: -1px;
-    }
-
-    .hero h2 {
-      font-size: 1.5rem;
-      color: var(--text-muted);
-      font-weight: 400;
-      margin-bottom: 2rem;
-    }
-
-    .hero p {
-      font-size: 1.1rem;
-      color: var(--text-muted);
-      max-width: 600px;
-      margin-bottom: 2.5rem;
-      line-height: 1.7;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 1rem;
-    }
-    
-    .hero-image-wrapper {
-      position: relative;
-      flex-shrink: 0;
-    }
-
-    .hero-image {
-      width: 320px;
-      height: 320px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid var(--border);
-      position: relative;
-      z-index: 2;
-    }
-    
-    .hero-image-bg {
-      position: absolute;
-      inset: -20px;
-      border-radius: 50%;
-      background: conic-gradient(from 0deg, var(--primary), var(--secondary), var(--accent), var(--primary));
-      filter: blur(20px);
-      opacity: 0.5;
-      animation: spin 10s linear infinite;
-      z-index: 1;
-    }
-    
-    @keyframes spin {
-      100% { transform: rotate(360deg); }
-    }
-
-    /* Experience */
-    .timeline {
-      position: relative;
-      padding-left: 2rem;
-    }
-    
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 0; top: 0; bottom: 0;
-      width: 2px;
-      background: var(--border);
-    }
-    
-    .timeline-item {
-      position: relative;
-      margin-bottom: 3rem;
-    }
-    
-    .timeline-item:last-child {
-      margin-bottom: 0;
-    }
-    
-    .timeline-dot {
-      position: absolute;
-      left: -2.35rem;
-      top: 0.3rem;
-      width: 12px; height: 12px;
-      border-radius: 50%;
-      background: var(--primary);
-      box-shadow: 0 0 10px var(--primary-glow);
-    }
-    
-    .exp-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 1rem;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    
-    .exp-role {
-      font-family: var(--font-heading);
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: var(--text-main);
-    }
-    
-    .exp-company {
-      color: var(--accent);
-      font-weight: 500;
-      font-size: 1.1rem;
-    }
-    
-    .exp-date {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      background: var(--bg-surface);
-      padding: 0.3rem 0.8rem;
-      border-radius: 6px;
-      border: 1px solid var(--border);
-    }
-    
-    .exp-details {
-      color: var(--text-muted);
-      list-style-type: none;
-    }
-    
-    .exp-details li {
-      position: relative;
-      padding-left: 1.5rem;
-      margin-bottom: 0.75rem;
-    }
-    
-    .exp-details li::before {
-      content: '▹';
-      position: absolute;
-      left: 0;
-      color: var(--primary);
-    }
-
-    /* Skills */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-    }
-    
-    .skill-category {
-      background: var(--bg-surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 2rem;
-      transition: var(--transition);
-    }
-    
-    .skill-category:hover {
-      border-color: var(--primary);
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px -10px rgba(129, 140, 248, 0.15);
-    }
-    
-    .skill-category h3 {
-      font-family: var(--font-heading);
-      font-size: 1.2rem;
-      margin-bottom: 1.5rem;
-      color: var(--text-main);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    
-    .skill-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-    
-    .skill-tag {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid var(--border);
-      padding: 0.4rem 0.8rem;
-      border-radius: 8px;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      transition: var(--transition);
-    }
-    
-    .skill-category:hover .skill-tag {
-      border-color: var(--border-hover);
-      color: var(--text-main);
-    }
-
-    /* Projects */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
-    }
-    
-    .project-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 2rem;
-      transition: var(--transition);
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
-    
-    .project-card:hover {
-      border-color: var(--secondary);
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px -10px rgba(192, 132, 252, 0.15);
-    }
-    
-    .project-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 1.5rem;
-    }
-    
-    .project-icon {
-      width: 40px; height: 40px;
-      background: rgba(129, 140, 248, 0.1);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--primary);
-    }
-    
-    .project-links a {
-      color: var(--text-muted);
-      transition: var(--transition);
-    }
-    
-    .project-links a:hover {
-      color: var(--primary);
-    }
-    
-    .project-title {
-      font-family: var(--font-heading);
-      font-size: 1.3rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
-      color: var(--text-main);
-    }
-    
-    .project-desc {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      margin-bottom: 2rem;
-      flex-grow: 1;
-    }
-    
-    .project-tech {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      font-family: monospace;
-      font-size: 0.85rem;
-      color: var(--accent);
-    }
-
-    /* Education & Certs */
-    .edu-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-    }
-    
-    .edu-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border);
-      padding: 1.5rem;
-      border-radius: 12px;
-      margin-bottom: 1rem;
-    }
-    
-    .edu-card h4 {
-      font-size: 1.1rem;
-      margin-bottom: 0.25rem;
-    }
-    
-    .edu-card p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-    }
-    
-    .edu-card .meta {
-      font-size: 0.85rem;
-      color: var(--primary);
-      margin-top: 0.5rem;
-    }
-
-    /* Contact */
-    .contact {
-      text-align: center;
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 5rem 0 10rem 0;
-    }
-    
-    .contact p {
-      color: var(--text-muted);
-      margin-bottom: 2.5rem;
-      font-size: 1.1rem;
-    }
-    
-    .contact-links {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-top: 3rem;
-    }
-    
-    .contact-icon {
-      width: 50px; height: 50px;
-      border-radius: 50%;
-      background: var(--bg-surface);
-      border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-muted);
-      transition: var(--transition);
-      text-decoration: none;
-    }
-    
-    .contact-icon:hover {
-      background: var(--text-main);
-      color: var(--bg);
-      transform: translateY(-5px);
-    }
-
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 2rem 0;
-      border-top: 1px solid var(--border);
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-
-    /* Scroll animations */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s ease-out;
-    }
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Spotlight Effect */
-    .spotlight {
-      position: relative;
-      overflow: hidden;
-    }
-    .spotlight::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.06), transparent 40%);
-      border-radius: inherit;
-      z-index: 0;
-      opacity: 0;
-      transition: opacity 0.5s ease;
-      pointer-events: none;
-    }
-    .spotlight:hover::before {
-      opacity: 1;
-    }
-    .spotlight > * {
-      position: relative;
-      z-index: 1;
-    }
-
-    /* Responsive */
-    @media (max-width: 992px) {
-      .hero-content {
-        flex-direction: column-reverse;
-        text-align: center;
-      }
-      .hero-actions {
-        justify-content: center;
-      }
-      .edu-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-    
-    .certs-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
-
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
-      .section-title {
-        font-size: 2rem;
-      }
-      .hero h1 {
-        font-size: 2.5rem;
-      }
-      .certs-grid {
-        grid-template-columns: 1fr;
-      }
-      .projects-grid {
-        grid-template-columns: 1fr;
-      }
-      section {
-        padding: 4rem 0;
-      }
-      .hero {
-        padding-top: 6rem;
-      }
-    }
-  </style>
+  <script>
+    // apply saved theme before paint to avoid a flash
+    (function () {
+      try {
+        var t = localStorage.getItem("theme");
+        if (!t) t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
 </head>
-<body>
-  
-  <div class="bg-grid"></div>
-  <div class="bg-noise"></div>
-  <div class="blob blob-1"></div>
-  <div class="blob blob-2"></div>
-  <div class="blob blob-3"></div>
 
-  <nav>
-    <div class="container nav-content">
-      <a href="#" class="logo">DBS.</a>
-      <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-      </div>
+<body class="loading">
+
+  <!-- preloader -->
+  <div id="preloader" aria-hidden="true">
+    <div>
+      <div class="loader-logo"><span>D</span><span>B</span><span>S</span></div>
+      <div class="loader-bar"></div>
     </div>
-  </nav>
+  </div>
+
+  <div id="scroll-progress"></div>
+
+  <!-- svg gradient used by education rings -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#7c3aed" />
+        <stop offset="55%" stop-color="#4f46e5" />
+        <stop offset="100%" stop-color="#0ea5e9" />
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <!-- ================= HEADER ================= -->
+  <header id="header">
+    <a href="#home" class="logo"><span class="logo-mark">DS</span><span class="grad-text">Dilshana</span></a>
+
+    <nav class="navbar" id="navbar">
+      <ul>
+        <li><a class="active" href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#work">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#testimonial">Recommendation</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <button class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+      <button class="icon-btn" id="menu-btn" aria-label="Open menu"><i class="fas fa-bars"></i></button>
+    </div>
+  </header>
 
   <main>
-    <!-- Hero Section -->
-    <section class="hero container" id="about">
-      <div class="hero-content">
-        <div class="hero-text reveal">
-          <div class="badge">Available for Trainee / Full-time Roles</div>
-          <h1>Dilshana Bano Sayyed</h1>
-          <h2>Full Stack Developer | React.js | Node.js | TypeScript</h2>
+
+    <!-- ================= HERO ================= -->
+    <section class="home" id="home">
+      <canvas id="particles"></canvas>
+      <div class="hero-blob b1"></div>
+      <div class="hero-blob b2"></div>
+
+      <div class="content">
+        <div class="hello-chip reveal"><span class="pulse-dot"></span> Open to Full Stack / Software Developer roles</div>
+        <h1 class="reveal" style="--d:.1s">Hi There <span class="wave">👋</span>,<br />I'm Dilshana <span class="grad-text">Sayyed</span></h1>
+        <p class="typing-line reveal" style="--d:.2s">I am into <span class="typing-text"></span><span class="cursor"></span></p>
+        <p class="lead reveal" style="--d:.3s">
+          Full Stack Developer who built <strong>www.ownmor.com</strong> end to end and was
+          <strong>promoted to Senior Developer</strong> at Ownmor Global. B.E. Computer Engineering 2026 graduate with a
+          <strong>CGPA of 8.9</strong>.
+        </p>
+        <div class="hero-btns reveal" style="--d:.4s">
+          <a href="#work" class="btn"><span>View My Work</span> <i class="fas fa-arrow-down"></i></a>
+          <a href="Dilshana-Sayyed-Resume.pdf" class="btn btn-outline" download><span>Download Resume</span> <i class="fas fa-download"></i></a>
+        </div>
+        <div class="social-icons reveal" style="--d:.5s">
+          <a class="linkedin" href="https://www.linkedin.com/in/dilshana-sayyed-410b7725b/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a class="github" href="https://github.com/dilshanasayyed" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a class="gmail" href="mailto:dilshanasayyed@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          <a class="phone" href="tel:+918591464654" aria-label="Phone"><i class="fas fa-phone"></i></a>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal zoom" style="--d:.3s">
+        <div class="orbit"></div>
+        <div class="hero-ring"></div>
+        <div class="hero-photo">
+          <img src="https://avatars.githubusercontent.com/u/148440462?v=4" alt="Dilshana Bano Sayyed" />
+        </div>
+        <div class="float-badge fb1"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/react/react-original.svg" alt="" /> React</div>
+        <div class="float-badge fb2"><i class="fas fa-trophy"></i> Senior Developer</div>
+        <div class="float-badge fb3"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/nodejs/nodejs-original.svg" alt="" /> Node.js</div>
+        <div class="float-badge fb4"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/typescript/typescript-original.svg" alt="" /> TypeScript</div>
+      </div>
+
+      <a href="#about" class="scroll-down" aria-label="Scroll down"></a>
+    </section>
+
+    <!-- ================= STATS ================= -->
+    <div class="stats">
+      <div class="stats-grid reveal">
+        <div class="stat"><i class="fas fa-graduation-cap"></i><span class="num" data-count="8.9" data-decimals="1">0</span><span class="label">B.E. CGPA</span></div>
+        <div class="stat"><i class="fas fa-diagram-project"></i><span class="num" data-stat="projects" data-suffix="+">0</span><span class="label">Projects Built</span></div>
+        <div class="stat"><i class="fas fa-layer-group"></i><span class="num" data-stat="skills" data-suffix="+">0</span><span class="label">Technologies</span></div>
+        <div class="stat"><i class="fas fa-rocket"></i><span class="num" data-count="1">0</span><span class="label">Production Site Shipped</span></div>
+      </div>
+    </div>
+
+    <!-- ================= ABOUT ================= -->
+    <section class="about" id="about">
+      <h2 class="heading reveal"><i class="fas fa-user"></i> About <span>Me</span></h2>
+      <div class="heading-line"></div>
+      <p class="sub-heading reveal">A little about who I am and how I work</p>
+
+      <div class="row">
+        <div class="about-photo reveal from-left">
+          <div class="frame">
+            <img src="https://avatars.githubusercontent.com/u/148440462?v=4" alt="Dilshana Bano Sayyed" loading="lazy" />
+          </div>
+          <div class="exp-badge"><strong><i class="fas fa-award"></i> Promoted</strong><small>to Senior Developer</small></div>
+        </div>
+
+        <div class="content reveal from-right">
+          <h3>I'm Dilshana Bano Sayyed</h3>
+          <span class="tag">Full Stack Developer · AI-Augmented Engineering</span>
           <p>
-            I build modern, scalable web applications using React.js, Next.js, and TypeScript, backed by robust REST APIs. Currently shipping enterprise features and looking to bring my problem-solving skills to a full-time engineering team.
+            I'm a <strong>Full Stack Developer</strong> and a 2026 <strong>B.E. Computer Engineering</strong> graduate from
+            M.H. Saboo Siddik College of Engineering, Mumbai, with a CGPA of <strong>8.9</strong>.
           </p>
-          <div class="hero-actions">
-            <a href="#contact" class="btn btn-primary">Get In Touch</a>
-            <a href="https://github.com/dilshanasayyed" target="_blank" class="btn btn-secondary">View GitHub</a>
+          <p>
+            At <strong>Ownmor Global Private Limited</strong> I built the company's official corporate website,
+            <strong>www.ownmor.com</strong>, end to end. I started with the frontend architecture and took it all the way to a
+            launch-ready site, working across React 18, TypeScript, Vite and Tailwind CSS on the frontend and Node.js, Prisma and PostgreSQL on the
+            backend. I set up the CI/CD pipelines with GitHub Actions, and I was <strong>promoted to Senior Developer</strong> on merit.
+          </p>
+          <p>
+            I like owning problems end to end, from a bug report all the way to a deployed fix. I pair hands-on engineering with AI-assisted
+            tooling to ship faster without cutting corners on code quality. I also build with Python and Django.
+          </p>
+          <p>Have a role or project in mind? <a href="#contact">Let's talk →</a></p>
+
+          <div class="info-grid">
+            <div class="info-item"><i class="fas fa-location-dot"></i><div><span>Location</span><b>Andheri (W), Mumbai</b></div></div>
+            <div class="info-item"><i class="fas fa-envelope"></i><div><span>Email</span><b>dilshanasayyed@gmail.com</b></div></div>
+            <div class="info-item"><i class="fas fa-phone"></i><div><span>Phone</span><b>+91 85914 64654</b></div></div>
+            <div class="info-item"><i class="fas fa-briefcase"></i><div><span>Status</span><b>Open to Work</b></div></div>
           </div>
-        </div>
-        <div class="hero-image-wrapper reveal">
-          <div class="hero-image-bg"></div>
-          <img src="https://avatars.githubusercontent.com/u/148440462?v=4" alt="Dilshana Bano Sayyed" class="hero-image">
+
+          <div class="about-btns">
+            <a href="Dilshana-Sayyed-Resume.pdf" class="btn" target="_blank" rel="noopener"><span>View Resume</span> <i class="fas fa-chevron-right"></i></a>
+            <a href="#testimonial" class="btn btn-outline"><span>Read Recommendation</span> <i class="fas fa-quote-right"></i></a>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Experience Section -->
-    <section class="container" id="experience">
-      <h2 class="section-title reveal">Professional <span>Experience</span></h2>
-      <div class="timeline reveal">
-        
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="exp-header">
-            <div>
-              <div class="exp-role">Full Stack Developer Intern</div>
-              <div class="exp-company">Ownmor Global Pvt. Ltd.</div>
-            </div>
-            <div class="exp-date">Jun 2026 – Present</div>
-          </div>
-          <ul class="exp-details">
-            <li>Built and shipped 15+ SSR/SSG pages within an enterprise-scale Next.js 16 (App Router), React 19, and TypeScript codebase.</li>
-            <li>Modeled type-safe relational schemas with Prisma ORM on PostgreSQL and used TanStack Query & Zustand for efficient data sync.</li>
-            <li>Built animation-rich UI using Framer Motion and Tailwind CSS; integrated Nodemailer email workflows for Contact Us and Grievance modules.</li>
-            <li>Owned end-to-end debugging, resolving 20+ production bugs, collaborating cross-functionally within Agile sprint workflows.</li>
-          </ul>
-        </div>
+    <!-- ================= SKILLS ================= -->
+    <section class="skills" id="skills">
+      <h2 class="heading reveal"><i class="fas fa-laptop-code"></i> Skills &amp; <span>Abilities</span></h2>
+      <div class="heading-line"></div>
+      <p class="sub-heading reveal">The tools I use to take products from idea to production</p>
 
+      <div class="filter-tabs reveal" id="skillTabs">
+        <button class="active" data-filter="all">All</button>
+        <button data-filter="frontend">Frontend</button>
+        <button data-filter="backend">Backend</button>
+        <button data-filter="database">Database</button>
+        <button data-filter="devops">DevOps &amp; Tools</button>
+        <button data-filter="data">Data &amp; ML</button>
+      </div>
+
+      <div class="container reveal">
+        <div id="skillsContainer"></div>
+      </div>
+
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+          <span><i class="fas fa-star"></i>Clean Code</span>
+          <span><i class="fas fa-star"></i>End-to-End Ownership</span>
+          <span><i class="fas fa-star"></i>AI-Assisted Development</span>
+          <span><i class="fas fa-star"></i>Responsive UI</span>
+          <span><i class="fas fa-star"></i>REST APIs</span>
+          <span><i class="fas fa-star"></i>CI/CD</span>
+          <span><i class="fas fa-star"></i>Problem Solving</span>
+          <span><i class="fas fa-star"></i>Fast Learner</span>
+          <span><i class="fas fa-star"></i>Team Collaboration</span>
+          <span><i class="fas fa-star"></i>Clean Code</span>
+          <span><i class="fas fa-star"></i>End-to-End Ownership</span>
+          <span><i class="fas fa-star"></i>AI-Assisted Development</span>
+          <span><i class="fas fa-star"></i>Responsive UI</span>
+          <span><i class="fas fa-star"></i>REST APIs</span>
+          <span><i class="fas fa-star"></i>CI/CD</span>
+          <span><i class="fas fa-star"></i>Problem Solving</span>
+          <span><i class="fas fa-star"></i>Fast Learner</span>
+          <span><i class="fas fa-star"></i>Team Collaboration</span>
+        </div>
       </div>
     </section>
 
-    <!-- Skills Section -->
-    <section class="container" id="skills">
-      <h2 class="section-title reveal">Technical <span>Arsenal</span></h2>
-      <div class="skills-grid reveal">
-        
-        <div class="skill-category spotlight">
-          <h3>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary)"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
-            Frontend
-          </h3>
-          <div class="skill-tags">
-            <span class="skill-tag">HTML</span>
-            <span class="skill-tag">CSS</span>
-            <span class="skill-tag">JavaScript</span>
-            <span class="skill-tag">React</span>
-            <span class="skill-tag">Next.js</span>
-            <span class="skill-tag">TypeScript</span>
-            <span class="skill-tag">Bootstrap</span>
-            <span class="skill-tag">Tailwind CSS</span>
+    <!-- ================= EDUCATION ================= -->
+    <section class="education" id="education">
+      <h2 class="heading reveal"><i class="fas fa-graduation-cap"></i> My <span>Education</span></h2>
+      <div class="heading-line"></div>
+      <p class="quote reveal">"Education is the key that unlocks the door to personal growth, professional success, and limitless possibilities."</p>
+
+      <div class="edu-grid">
+        <div class="edu-card featured reveal" style="--d:0s">
+          <div class="ribbon">Graduate</div>
+          <div class="ring" data-percent="89">
+            <svg viewBox="0 0 120 120"><circle class="track" cx="60" cy="60" r="54" /><circle class="bar" cx="60" cy="60" r="54" /></svg>
+            <div class="val"><b data-count="8.9" data-decimals="1">0</b><small>CGPA</small></div>
           </div>
+          <h3>B.E. Computer Engineering</h3>
+          <p class="inst">M.H. Saboo Siddik College of Engineering, Mumbai</p>
+          <span class="meta"><i class="fas fa-calendar"></i> 2022 – 2026 · University of Mumbai</span>
         </div>
 
-        <div class="skill-category spotlight">
-          <h3>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--secondary)"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
-            Backend & APIs
-          </h3>
-          <div class="skill-tags">
-            <span class="skill-tag">Node.js</span>
-            <span class="skill-tag">Express.js</span>
-            <span class="skill-tag">REST APIs</span>
-            <span class="skill-tag">Django</span>
-            <span class="skill-tag">Auth (Session/JWT)</span>
+        <div class="edu-card reveal" style="--d:.15s">
+          <div class="ring" data-percent="84.17">
+            <svg viewBox="0 0 120 120"><circle class="track" cx="60" cy="60" r="54" /><circle class="bar" cx="60" cy="60" r="54" /></svg>
+            <div class="val"><b data-count="84.17" data-decimals="2" data-suffix="%">0</b><small>Score</small></div>
           </div>
+          <h3>HSC (Class XII, Science)</h3>
+          <p class="inst">Valia Lilavantiben Chhaganlal Junior College</p>
+          <span class="meta"><i class="fas fa-calendar"></i> 2022 · Maharashtra State Board</span>
         </div>
 
-        <div class="skill-category spotlight">
-          <h3>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent)"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-            Database & ORM
-          </h3>
-          <div class="skill-tags">
-            <span class="skill-tag">PostgreSQL</span>
-            <span class="skill-tag">MySQL</span>
-            <span class="skill-tag">SQLite</span>
-            <span class="skill-tag">Prisma ORM</span>
-            <span class="skill-tag">Django ORM</span>
-            <span class="skill-tag">SQL</span>
+        <div class="edu-card reveal" style="--d:.3s">
+          <div class="ring" data-percent="79.2">
+            <svg viewBox="0 0 120 120"><circle class="track" cx="60" cy="60" r="54" /><circle class="bar" cx="60" cy="60" r="54" /></svg>
+            <div class="val"><b data-count="79.20" data-decimals="2" data-suffix="%">0</b><small>Score</small></div>
+          </div>
+          <h3>SSC (Class X)</h3>
+          <p class="inst">Secondary School Certificate</p>
+          <span class="meta"><i class="fas fa-school"></i> Maharashtra State Board</span>
+        </div>
+      </div>
+
+      <h2 class="heading cert-title reveal"><i class="fas fa-award"></i> <span>Certifications</span></h2>
+      <div class="heading-line"></div>
+      <div class="cert-grid">
+        <div class="cert-card reveal" style="--d:0s">
+          <div class="c-ico" style="background:linear-gradient(135deg,#ef4444,#b91c1c)"><i class="fas fa-user-shield"></i></div>
+          <div>
+            <h4>Cybersecurity &amp; Ethical Hacking</h4>
+            <p>Xecuremind Lab: VAPT, network security and secure coding</p>
+            <span class="yr">2026</span>
           </div>
         </div>
-
-        <div class="skill-category spotlight">
-          <h3>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary)"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
-            Tools & Others
-          </h3>
-          <div class="skill-tags">
-            <span class="skill-tag">Git / GitHub</span>
-            <span class="skill-tag">Docker</span>
-            <span class="skill-tag">Postman</span>
-            <span class="skill-tag">AWS Basics</span>
-            <span class="skill-tag">CI/CD (Render)</span>
-            <span class="skill-tag">Python (ML Basics)</span>
+        <div class="cert-card reveal" style="--d:.15s">
+          <div class="c-ico" style="background:linear-gradient(135deg,#f59e0b,#ea580c)"><i class="fab fa-aws"></i></div>
+          <div>
+            <h4>AWS Cloud Foundations</h4>
+            <p>AWS Academy</p>
+            <span class="yr">2025</span>
           </div>
         </div>
-
+        <div class="cert-card reveal" style="--d:.3s">
+          <div class="c-ico" style="background:linear-gradient(135deg,#10b981,#0d9488)"><i class="fas fa-chart-line"></i></div>
+          <div>
+            <h4>Data Science &amp; Analytics</h4>
+            <p>FutureUpskills</p>
+            <span class="yr">2025</span>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Projects Section -->
-    <section class="container" id="projects">
-      <h2 class="section-title reveal">Featured <span>Projects</span></h2>
-      <div class="projects-grid reveal">
-        
-        <!-- Project 1 -->
-        <div class="project-card spotlight">
-          <div class="project-header">
-            <div class="project-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/dilshanasayyed/Job-Tracker" target="_blank">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-              </a>
-            </div>
-          </div>
-          <h3 class="project-title">Job Application Tracker</h3>
-          <p class="project-desc">
-            A full-stack CRUD web application with REST-style routes, session-based authentication, and an analytics dashboard for tracking job application statuses. Automated CI/CD deployment to Render.
-          </p>
-          <div class="project-tech">
-            <span>Python</span>
-            <span>Django</span>
-            <span>PostgreSQL</span>
-            <span>Bootstrap 5</span>
-          </div>
-        </div>
+    <!-- ================= PROJECTS ================= -->
+    <section class="work" id="work">
+      <h2 class="heading reveal"><i class="fas fa-code"></i> Projects <span>Made</span></h2>
+      <div class="heading-line"></div>
+      <p class="sub-heading reveal">A production website, full-stack apps and data projects</p>
 
-        <!-- Project 2 -->
-        <div class="project-card spotlight">
-          <div class="project-header">
-            <div class="project-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-            </div>
-          </div>
-          <h3 class="project-title">Automated Study Planner</h3>
-          <p class="project-desc">
-            A data-processing pipeline extracting curriculum topics from unstructured PDFs using PDFPlumber. Engineered a custom scheduling algorithm to dynamically allocate study workload by deadline.
-          </p>
-          <div class="project-tech">
-            <span>Python</span>
-            <span>Django</span>
-            <span>PostgreSQL</span>
-            <span>PyPDFium2</span>
-          </div>
-        </div>
-
-        <!-- Project 3 -->
-        <div class="project-card spotlight">
-          <div class="project-header">
-            <div class="project-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/dilshanasayyed/fake-news-detection-system-" target="_blank">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-              </a>
-            </div>
-          </div>
-          <h3 class="project-title">Fake News Detection API</h3>
-          <p class="project-desc">
-            An NLP/TF-IDF classification pipeline trained with Scikit-learn and served through a Flask REST API with CORS support and an automated pytest suite.
-          </p>
-          <div class="project-tech">
-            <span>Flask</span>
-            <span>Scikit-learn</span>
-            <span>Pandas</span>
-            <span>NumPy</span>
-          </div>
-        </div>
-        
-        <!-- Project 4 -->
-        <div class="project-card spotlight">
-          <div class="project-header">
-            <div class="project-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/dilshanasayyed/student-management-system-java-" target="_blank">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-              </a>
-            </div>
-          </div>
-          <h3 class="project-title">Student Management System</h3>
-          <p class="project-desc">
-            A robust desktop-based management system tailored for educational institutions, handling core entity records, operations, and administrative tasks safely and consistently.
-          </p>
-          <div class="project-tech">
-            <span>Java</span>
-            <span>OOP</span>
-            <span>MySQL</span>
-          </div>
-        </div>
-
+      <div class="filter-tabs reveal" id="projectTabs">
+        <button class="active" data-filter="all">All</button>
+        <button data-filter="fullstack">Full Stack</button>
+        <button data-filter="django">Python &amp; Django</button>
+        <button data-filter="data">ML &amp; Data</button>
+        <button data-filter="other">Other</button>
       </div>
-    </section>
-    
-    <!-- Education Section -->
-    <section class="container">
-      <h2 class="section-title reveal">Education & <span>Certifications</span></h2>
-      <div class="edu-grid reveal">
-        <!-- Education Column -->
-        <div>
-          <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--primary);">Academic Background</h3>
-          <div class="edu-card spotlight" style="border-left: 4px solid var(--primary); padding-left: 1.5rem; background: var(--bg-surface-hover); transform: scale(1.02); box-shadow: 0 10px 30px -10px rgba(129, 140, 248, 0.15);">
-            <h4 style="font-size: 1.25rem; font-weight: 700; color: var(--text-main);">B.E. Computer Engineering</h4>
-            <p style="font-size: 1.05rem; font-weight: 500; color: var(--accent); margin-bottom: 0.5rem;">M.H. Saboo Siddik College of Engineering, Mumbai</p>
-            <p style="color: var(--text-muted); margin-bottom: 1rem;">Relevant Coursework: Data Structures, Algorithms, Database Management, Web Development, Machine Learning.</p>
-            <div class="meta" style="display: inline-block; background: rgba(129, 140, 248, 0.1); padding: 0.3rem 0.8rem; border-radius: 99px; font-weight: 600;">2022 – 2026 • CGPA: 8.9/10</div>
+
+      <div class="project-grid" id="projectGrid">
+
+        <!-- Featured: Ownmor -->
+        <article class="project-card featured reveal" data-cat="fullstack">
+          <div class="p-thumb" style="--g:linear-gradient(135deg,#7c3aed,#4f46e5 55%,#0ea5e9)">
+            <span class="p-cat">Featured · Production</span>
+            <span class="p-live"><span class="pulse-dot"></span> Live</span>
+            <i class="fas fa-globe"></i>
           </div>
-        </div>
-        
-        <!-- Certifications Column -->
-        <div>
-          <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--secondary);">Certifications</h3>
-          <div class="edu-card spotlight" style="position: relative; overflow: hidden; border: 1px solid var(--secondary);">
-            <div style="position: absolute; top: 0; right: 0; background: var(--secondary); color: #fff; font-size: 0.7rem; font-weight: bold; padding: 0.2rem 0.6rem; border-bottom-left-radius: 8px;">Latest</div>
-            <h4 style="color: var(--text-main); font-size: 1.15rem;">Cybersecurity & Ethical Hacking</h4>
-            <p style="color: var(--accent); font-weight: 500;">Xecuremind Lab</p>
-            <ul style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem; margin-left: 1rem;">
-              <li>Vulnerability assessment and penetration testing (VAPT).</li>
-              <li>Network security and secure coding practices.</li>
+          <div class="p-body">
+            <h3>Ownmor Global: Official Corporate Website</h3>
+            <p>
+              I built the company's official website end to end at Ownmor Global Private Limited, from the initial frontend architecture to
+              a complete, launch-ready site.
+            </p>
+            <ul class="p-bullets">
+              <li>Frontend in React 18, TypeScript 5, Vite 5 and Tailwind CSS 3, with React Router 6</li>
+              <li>State and data managed with TanStack Query and Zustand</li>
+              <li>Backend on Node.js with Prisma ORM and PostgreSQL</li>
+              <li>CI/CD with GitHub Actions validates and deploys every build</li>
             </ul>
-            <div class="meta" style="margin-top: 0.8rem;">2026</div>
-          </div>
-          
-          <div class="certs-grid">
-            <div class="edu-card spotlight" style="margin-bottom: 0;">
-              <h4>AWS Cloud Foundations</h4>
-              <p>AWS Academy</p>
-              <div class="meta">2025</div>
+            <div class="p-tech">
+              <span>React 18</span><span>TypeScript</span><span>Vite</span><span>Tailwind CSS</span><span>Node.js</span><span>Prisma</span><span>PostgreSQL</span><span>GitHub Actions</span>
             </div>
-            <div class="edu-card spotlight" style="margin-bottom: 0;">
-              <h4>Data Science & Analytics</h4>
-              <p>FutureUpskills</p>
-              <div class="meta">2025</div>
+            <div class="p-links">
+              <a href="https://www.ownmor.com" target="_blank" rel="noopener"><i class="fas fa-arrow-up-right-from-square"></i> Visit Live Site</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card tilt reveal" data-cat="django">
+          <div class="p-thumb" style="--g:linear-gradient(135deg,#f59e0b,#ef4444)">
+            <span class="p-cat">Django</span>
+            <i class="fas fa-school"></i>
+          </div>
+          <div class="p-body">
+            <h3>Radiance Academy Fees &amp; Management System</h3>
+            <p>A web system for managing academy records, with secure admin login and a dashboard. It has modules for students, education, marks, fees, addresses and documents.</p>
+            <div class="p-tech"><span>Python</span><span>Django</span><span>PostgreSQL</span><span>HTML/CSS</span></div>
+            <div class="p-links">
+              <a href="https://github.com/dilshanasayyed/radiance-a-fees-management-system-" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card tilt reveal" data-cat="django">
+          <div class="p-thumb" style="--g:linear-gradient(135deg,#0ea5e9,#2563eb)">
+            <span class="p-cat">Django</span>
+            <i class="fas fa-briefcase"></i>
+          </div>
+          <div class="p-body">
+            <h3>Job Application Tracker</h3>
+            <p>A full-stack CRUD app with session-based authentication and an analytics dashboard for tracking job application statuses. It deploys to Render automatically.</p>
+            <div class="p-tech"><span>Python</span><span>Django</span><span>PostgreSQL</span><span>Bootstrap 5</span></div>
+            <div class="p-links">
+              <a href="https://github.com/dilshanasayyed/Job-Tracker" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card tilt reveal" data-cat="fullstack">
+          <div class="p-thumb" style="--g:linear-gradient(135deg,#db2777,#9333ea)">
+            <span class="p-cat">React · Node</span>
+            <i class="fas fa-shield-heart"></i>
+          </div>
+          <div class="p-body">
+            <h3>Her Shield: Women Safety App</h3>
+            <p>A safety app with a simple interface for SOS alerts and quick help. The backend handles notifications, alerts, authentication and basic location sharing.</p>
+            <div class="p-tech"><span>React</span><span>Node.js</span><span>Auth</span><span>Geolocation</span></div>
+          </div>
+        </article>
+
+        <article class="project-card tilt reveal" data-cat="django">
+          <div class="p-thumb" style="--g:linear-gradient(135deg,#8b5cf6,#6366f1)">
+            <span class="p-cat">Django</span>
+            <i class="fas fa-calendar-check"></i>
+          </div>
+          <div class="p-body">
+            <h3>Automated Study Planner</h3>
+            <p>A study planner that pulls curriculum topics out of unstructured PDFs. A custom scheduling algorithm then spreads the study workload across the days left before each deadline.</p>
+            <div class="p-tech"><span>Python</span><span>Django</span><span>PostgreSQL</span><span>PDF Parsing</span></div>
+            <div class="p-links">
+              <a href="https://github.com/dilshanasayyed/study-planner" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card tilt reveal" data-cat="data">
+          <div class="p-thumb" style="--g:linear-gradient(135deg,#ef4444,#f97316)">
+            <span class="p-cat">NLP · ML</span>
+            <i class="fas fa-newspaper"></i>
+          </div>
+          <div class="p-body">
+            <h3>Fake News Detection API</h3>
+            <p>An NLP pipeline that classifies news using TF-IDF and Scikit-learn. It's served through a Flask REST API with CORS support and tested with pytest.</p>
+            <div class="p-tech"><span>Flask</span><span>Scikit-learn</span><span>Pandas</span><span>NumPy</span></div>
+            <div class="p-links">
+              <a href="https://github.com/dilshanasayyed/fake-news-detection-system-" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card tilt reveal" data-cat="django">
+          <div class="p-thumb" style="--g:linear-gradient(135deg,#22c55e,#059669)">
+            <span class="p-cat">Django</span>
+            <i class="fas fa-basket-shopping"></i>
+          </div>
+          <div class="p-body">
+            <h3>Online Grocery Shopping System</h3>
+            <p>An online grocery store with product listings, user login, order management and a smooth checkout flow.</p>
+            <div class="p-tech"><span>Python</span><span>Django</span><span>PostgreSQL</span><span>JavaScript</span></div>
+          </div>
+        </article>
+
+        <article class="project-card tilt reveal" data-cat="data">
+          <div class="p-thumb" style="--g:linear-gradient(135deg,#14b8a6,#0284c7)">
+            <span class="p-cat">Analytics</span>
+            <i class="fas fa-chart-pie"></i>
+          </div>
+          <div class="p-body">
+            <h3>Retail Sales Analytics</h3>
+            <p>Cleans and analyses retail sales data to find product performance trends and monthly patterns. The results are shown in interactive Jupyter visualisations.</p>
+            <div class="p-tech"><span>Python</span><span>Pandas</span><span>Jupyter</span><span>Matplotlib</span></div>
+          </div>
+        </article>
+
+        <article class="project-card tilt reveal" data-cat="other">
+          <div class="p-thumb" style="--g:linear-gradient(135deg,#64748b,#334155)">
+            <span class="p-cat">Python · SQL</span>
+            <i class="fas fa-book"></i>
+          </div>
+          <div class="p-body">
+            <h3>Library Management System</h3>
+            <p>A Python app on SQL Server that tracks books, members and issues/returns, with optimised CRUD queries and relational integrity.</p>
+            <div class="p-tech"><span>Python</span><span>SQL Server</span><span>SSMS</span><span>SQL</span></div>
+          </div>
+        </article>
+
+        <article class="project-card tilt reveal" data-cat="other">
+          <div class="p-thumb" style="--g:linear-gradient(135deg,#f97316,#b45309)">
+            <span class="p-cat">Java</span>
+            <i class="fas fa-users"></i>
+          </div>
+          <div class="p-body">
+            <h3>Student Management System</h3>
+            <p>A desktop management system for educational institutions that handles student records and admin tasks reliably, built with OOP.</p>
+            <div class="p-tech"><span>Java</span><span>OOP</span><span>MySQL</span></div>
+            <div class="p-links">
+              <a href="https://github.com/dilshanasayyed/student-management-system-java-" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ================= EXPERIENCE ================= -->
+    <section class="experience" id="experience">
+      <h2 class="heading reveal"><i class="fas fa-briefcase"></i> Work <span>Experience</span></h2>
+      <div class="heading-line"></div>
+      <p class="sub-heading reveal">Ownmor Global Private Limited · Vasai West, Mumbai-Palghar</p>
+
+      <div class="timeline" id="timeline">
+        <div class="line"><div class="line-fill" id="lineFill"></div></div>
+
+        <div class="t-item left reveal from-left">
+          <div class="t-dot"><i class="fas fa-trophy"></i></div>
+          <div class="t-card">
+            <div class="t-top">
+              <span class="t-date"><i class="fas fa-calendar"></i> Promoted · until Sep 11, 2026</span>
+              <span class="t-badge"><i class="fas fa-arrow-trend-up"></i> Merit Promotion</span>
+            </div>
+            <h3>Senior Developer</h3>
+            <h4>Ownmor Global Private Limited</h4>
+            <ul>
+              <li>Took <strong>continuing responsibility</strong> for the company website's development after a merit-based promotion.</li>
+              <li>Made independent decisions on <strong>structure and implementation</strong> and shipped reliable work with minimal supervision.</li>
+              <li>Resolved issues <strong>end to end</strong>, from bug fix through to deployment.</li>
+              <li>Ran <strong>CI/CD with GitHub Actions</strong> for my workstreams so every build was validated and deployed reliably.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="t-item right reveal from-right">
+          <div class="t-dot"><i class="fas fa-code"></i></div>
+          <div class="t-card">
+            <div class="t-top">
+              <span class="t-date"><i class="fas fa-calendar"></i> Jun 11, 2026: Joined</span>
+            </div>
+            <h3>Full Stack Developer (AI-Augmented Engineering)</h3>
+            <h4>Ownmor Global Private Limited</h4>
+            <ul>
+              <li>Built the official corporate website <strong>www.ownmor.com</strong> end to end, from frontend architecture to a launch-ready site.</li>
+              <li>Worked across the full production stack: <strong>React 18, TypeScript 5, Vite 5, Tailwind CSS 3</strong> on the frontend and <strong>Node.js, Prisma ORM, PostgreSQL</strong> on the backend.</li>
+              <li>Managed routing, state and data with <strong>React Router 6, TanStack Query and Zustand</strong>.</li>
+              <li>Followed Ownmor's <strong>AI-augmented engineering</strong> practice, using AI-assisted tools to ship faster without compromising code quality.</li>
+            </ul>
+            <div class="t-stack">
+              <span><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/react/react-original.svg" alt="" />React</span>
+              <span><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/typescript/typescript-original.svg" alt="" />TypeScript</span>
+              <span><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/vitejs/vitejs-original.svg" alt="" />Vite</span>
+              <span><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/tailwindcss/tailwindcss-original.svg" alt="" />Tailwind</span>
+              <span><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/nodejs/nodejs-original.svg" alt="" />Node.js</span>
+              <span><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/prisma/prisma-original.svg" alt="" />Prisma</span>
+              <span><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/postgresql/postgresql-original.svg" alt="" />PostgreSQL</span>
+              <span><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/githubactions/githubactions-original.svg" alt="" />GitHub Actions</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact container" id="contact">
-      <h2 class="section-title reveal">Let's <span>Connect</span></h2>
-      <p class="reveal">
-        Currently based in Mumbai and actively looking for a Software Developer Trainee or full-time engineering position. My inbox is always open. Whether you have a question or just want to say hi, I'll try my best to get back to you!
-      </p>
-      
-      <div class="contact-links reveal">
-        <a href="mailto:dilshanasayyed@gmail.com" class="contact-icon" title="Email">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-        </a>
-        <a href="https://github.com/dilshanasayyed" target="_blank" class="contact-icon" title="GitHub">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-        </a>
-        <a href="https://linkedin.com/in/dilshanasayyed" target="_blank" class="contact-icon" title="LinkedIn">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-        </a>
-        <a href="tel:+918591464654" class="contact-icon" title="Phone">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-        </a>
+    <!-- ================= RECOMMENDATION ================= -->
+    <section class="testimonial" id="testimonial">
+      <h2 class="heading reveal"><i class="fas fa-quote-right"></i> Letter of <span>Recommendation</span></h2>
+      <div class="heading-line"></div>
+      <p class="sub-heading reveal">From the Founder &amp; Managing Director of Ownmor Global Private Limited</p>
+
+      <div class="rec-wrap">
+        <div class="rec-card reveal from-left">
+          <i class="fas fa-quote-right big-quote"></i>
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <div class="rec-text">
+            <p>"Dilshana built our official corporate website, www.ownmor.com, <mark>end to end</mark>, from the initial frontend architecture through to a complete, launch-ready site. She worked confidently across our full production stack…"</p>
+            <p>"What stood out about Dilshana's contribution was her <mark>ownership</mark>: she made sound independent decisions on structure and implementation, and consistently shipped functional, reliable work with minimal supervision… Her <mark>promotion to Senior Developer</mark> within this period was a direct, merit-based recognition of that ownership and the technical depth she brought to the team."</p>
+            <p>"I recommend Dilshana <mark>without reservation</mark> to any organization seeking a capable, reliable, and fast-growing full stack developer."</p>
+          </div>
+          <div class="rec-highlights">
+            <span><i class="fas fa-check"></i> End-to-end ownership</span>
+            <span><i class="fas fa-check"></i> Minimal supervision</span>
+            <span><i class="fas fa-check"></i> Merit-based promotion</span>
+          </div>
+          <div class="rec-author">
+            <div class="avatar">MS</div>
+            <div>
+              <h4>Mohd Husain Babubhai Savvalakhe</h4>
+              <span class="company">Founder &amp; Managing Director, Ownmor Global Private Limited</span>
+              <span>Dated 12 September 2026 · www.ownmor.com</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal from-right">
+          <div class="letter-preview" id="letterPreview" tabindex="0" role="button" aria-label="View the original recommendation letter">
+            <img src="assets/recommendation-letter.png" alt="Experience and recommendation letter from Ownmor Global Private Limited" loading="lazy" />
+            <div class="overlay"><i class="fas fa-magnifying-glass-plus"></i> View original letter</div>
+          </div>
+          <p class="letter-caption"><i class="fas fa-file-signature"></i> Signed and stamped original. Click to enlarge.</p>
+        </div>
       </div>
-      
-      <div style="margin-top: 3rem;" class="reveal">
-        <a href="mailto:dilshanasayyed@gmail.com" class="btn btn-primary">Say Hello</a>
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+    <section class="contact" id="contact">
+      <h2 class="heading reveal"><i class="fas fa-headset"></i> Get in <span>Touch</span></h2>
+      <div class="heading-line"></div>
+      <p class="sub-heading reveal">Have a role, a project, or just want to say hi? My inbox is always open.</p>
+
+      <div class="container reveal zoom">
+        <div class="contact-art">
+          <i class="fas fa-paper-plane plane"></i>
+          <h3>Let's work<br />together!</h3>
+          <p>I'm looking for Full Stack or Software Developer roles, whether remote, hybrid or on-site.</p>
+          <div class="contact-list">
+            <a href="mailto:dilshanasayyed@gmail.com"><i class="fas fa-envelope"></i> dilshanasayyed@gmail.com</a>
+            <a href="tel:+918591464654"><i class="fas fa-phone"></i> +91 85914 64654</a>
+            <div><i class="fas fa-location-dot"></i> Andheri (W), Mumbai, Maharashtra</div>
+          </div>
+          <div class="social-icons">
+            <a class="linkedin" href="https://www.linkedin.com/in/dilshana-sayyed-410b7725b/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a class="github" href="https://github.com/dilshanasayyed" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+
+        <form id="contact-form" novalidate>
+          <h3>Send a message</h3>
+          <p>I usually reply within a day.</p>
+          <div class="form-row">
+            <div class="field">
+              <input type="text" id="f-name" name="name" placeholder=" " required />
+              <i class="fas fa-user"></i>
+              <label for="f-name">Your Name</label>
+            </div>
+            <div class="field">
+              <input type="email" id="f-email" name="email" placeholder=" " required />
+              <i class="fas fa-envelope"></i>
+              <label for="f-email">Your Email</label>
+            </div>
+          </div>
+          <div class="field">
+            <input type="text" id="f-subject" name="subject" placeholder=" " />
+            <i class="fas fa-tag"></i>
+            <label for="f-subject">Subject</label>
+          </div>
+          <div class="field">
+            <textarea id="f-message" name="message" placeholder=" " required></textarea>
+            <i class="fas fa-comment-dots"></i>
+            <label for="f-message">Your Message</label>
+          </div>
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+          <button type="submit" class="btn"><span>Send Message</span> <i class="fas fa-paper-plane"></i></button>
+          <p class="form-status" id="formStatus" role="status"></p>
+        </form>
       </div>
     </section>
 
   </main>
 
-  <footer>
-    <div class="container">
-      <p>&copy; 2026 Dilshana Bano Sayyed. Built from scratch with HTML, CSS & JS.</p>
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="box-container">
+      <div class="box">
+        <h3>Dilshana's Portfolio</h3>
+        <p>Thank you for visiting my portfolio. I'm open to work and always happy to collaborate on exciting projects. Let's build something great together!</p>
+      </div>
+      <div class="box">
+        <h3>Quick Links</h3>
+        <div class="links">
+          <a href="#home"><i class="fas fa-chevron-right"></i>Home</a>
+          <a href="#about"><i class="fas fa-chevron-right"></i>About</a>
+          <a href="#skills"><i class="fas fa-chevron-right"></i>Skills</a>
+          <a href="#education"><i class="fas fa-chevron-right"></i>Education</a>
+          <a href="#work"><i class="fas fa-chevron-right"></i>Projects</a>
+          <a href="#experience"><i class="fas fa-chevron-right"></i>Experience</a>
+          <a href="#testimonial"><i class="fas fa-chevron-right"></i>Recommendation</a>
+          <a href="#contact"><i class="fas fa-chevron-right"></i>Contact</a>
+        </div>
+      </div>
+      <div class="box info">
+        <h3>Contact Info</h3>
+        <p><i class="fas fa-envelope"></i> dilshanasayyed@gmail.com</p>
+        <p><i class="fas fa-phone"></i> +91 85914 64654</p>
+        <p><i class="fas fa-location-dot"></i> Mumbai, India</p>
+        <div class="share">
+          <a href="https://www.linkedin.com/in/dilshana-sayyed-410b7725b/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://github.com/dilshanasayyed" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="mailto:dilshanasayyed@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
     </div>
+    <p class="credit">© <span id="year">2026</span> Dilshana Bano Sayyed · Designed &amp; built with <i class="fas fa-heart heart"></i></p>
   </footer>
 
-  <script>
-    // Reveal animations on scroll
-    function reveal() {
-      var reveals = document.querySelectorAll(".reveal");
-      for (var i = 0; i < reveals.length; i++) {
-        var windowHeight = window.innerHeight;
-        var elementTop = reveals[i].getBoundingClientRect().top;
-        var elementVisible = 100;
-        
-        if (elementTop < windowHeight - elementVisible) {
-          reveals[i].classList.add("active");
-        }
-      }
-    }
-    
-    window.addEventListener("scroll", reveal);
-    // Trigger once on load
-    reveal();
+  <a href="#home" id="scroll-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></a>
 
-    // Spotlight effect
-    document.querySelectorAll(".spotlight").forEach(card => {
-      card.addEventListener("mousemove", e => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        card.style.setProperty("--mouse-x", `${x}px`);
-        card.style.setProperty("--mouse-y", `${y}px`);
-      });
-    });
-  </script>
+  <!-- letter lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="close" id="lightboxClose" aria-label="Close"><i class="fas fa-xmark"></i></button>
+    <img src="assets/recommendation-letter.png" alt="Experience and recommendation letter from Ownmor Global Private Limited" />
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
